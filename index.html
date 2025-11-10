@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erfolg mit KI - Workshops & Beratung</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #0f172a;
+            --accent-color: #10b981;
+            --text-color: #1e293b;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Grid Section */
+        .grid-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .grid-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .grid-intro {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 60px;
+            color: var(--text-color);
+        }
+
+        .success-grid-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .success-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 2px;
+            background-color: #cbd5e1;
+            border: 2px solid #cbd5e1;
+            margin-top: 60px;
+        }
+
+        .grid-quadrant {
+            background-color: var(--white);
+            padding: 30px;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .grid-quadrant h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .grid-quadrant p {
+            font-size: 1rem;
+            color: #64748b;
+        }
+
+        .grid-quadrant.bottom-left {
+            background-color: #fee2e2;
+        }
+
+        .grid-quadrant.top-left {
+            background-color: #fef3c7;
+        }
+
+        .grid-quadrant.bottom-right {
+            background-color: #dbeafe;
+        }
+
+        .grid-quadrant.top-right {
+            background-color: #d1fae5;
+            border: 3px solid var(--accent-color);
+        }
+
+        .axis-label {
+            position: absolute;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+        }
+
+        .axis-vertical {
+            left: -150px;
+            top: 50%;
+            transform: rotate(-90deg);
+            transform-origin: center;
+            white-space: nowrap;
+        }
+
+        .axis-horizontal {
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .grid-goal {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--secondary-color);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .service-label {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-card h4 {
+            font-size: 1rem;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+        }
+
+        .service-card ul {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .service-card li {
+            padding: 6px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .service-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .service-result {
+            background-color: var(--light-bg);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .service-result strong {
+            color: var(--secondary-color);
+        }
+
+        /* Connection Table */
+        .connection-section {
+            padding: 60px 0;
+            background-color: var(--white);
+        }
+
+        .connection-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--secondary-color);
+        }
+
+        .connection-table {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 20px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--light-bg);
+        }
+
+        td {
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .final-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+            opacity: 0.95;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .success-grid {
+                grid-template-columns: 1fr;
+                margin-top: 40px;
+            }
+
+            .axis-vertical,
+            .axis-horizontal {
+                display: none;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .connection-table {
+                overflow-x: auto;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Erfolg mit KI: Wenn Technologie und Menschen bereit sind</h1>
+            <p>Der Schlüssel zu erfolgreichen AI-Projekten liegt im Gleichgewicht von technologischem Fortschritt und menschlicher Bereitschaft.</p>
+            <a href="#contact" class="cta-button">Kostenloses Erstgespräch vereinbaren</a>
+        </div>
+    </section>
+
+    <!-- Success Grid Section -->
+    <section class="grid-section">
+        <div class="container">
+            <h2>Das Erfolgs-Raster</h2>
+            <p class="grid-intro">Erfolgreiche KI-Implementierung entsteht an der Schnittstelle von Technologie und menschlicher Bereitschaft</p>
+
+            <div class="success-grid-container">
+                <div class="axis-label axis-vertical">Technologischer Fortschritt →</div>
+                <div class="axis-label axis-horizontal">Bereitschaft & Wissen der Mitarbeitenden →</div>
+
+                <div class="success-grid">
+                    <div class="grid-quadrant top-left">
+                        <h3>Motivation ohne Mittel</h3>
+                        <p>Menschen wollen, aber Technologie fehlt</p>
+                    </div>
+                    <div class="grid-quadrant top-right">
+                        <h3>✓ Skalierbares Wachstum</h3>
+                        <p>Technologie & Menschen im Einklang</p>
+                    </div>
+                    <div class="grid-quadrant bottom-left">
+                        <h3>Experimentierphase</h3>
+                        <p>Weder Technik noch Menschen bereit</p>
+                    </div>
+                    <div class="grid-quadrant bottom-right">
+                        <h3>Technologie-Push</h3>
+                        <p>Systeme da, aber Akzeptanz fehlt</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="grid-goal">🎯 Unser Ziel ist, Ihr Unternehmen in die obere rechte Ecke zu bringen.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2>Unsere Leistungen</h2>
+
+            <div class="service-grid">
+                <!-- Service A -->
+                <div class="service-card">
+                    <span class="service-label">Workshop A</span>
+                    <h3>KI im digitalen Marketing</h3>
+                    <p><strong>Dauer:</strong> 1 Tag</p>
+
+                    <h4>Ziel:</h4>
+                    <p>In einem Tag verstehen, wie man mit KI Marketing-Prozesse automatisiert, Kampagnen smarter steuert und Content generiert.</p>
+
+                    <h4>Inhalte:</h4>
+                    <ul>
+                        <li>Einsatz von ChatGPT, Claude und Gemini im Marketing</li>
+                        <li>Prompt-Engineering-Techniken</li>
+                        <li>KI-gestützte Content-Ideation</li>
+                        <li>Web-Coding-Beispiele für dynamische KI-Kampagnen</li>
+                    </ul>
+
+                    <div class="service-result">
+                        <strong>Ergebnis:</strong> Ein klarer Workflow, um digitales Marketing mit KI praktisch umzusetzen.
+                    </div>
+                </div>
+
+                <!-- Service B -->
+                <div class="service-card">
+                    <span class="service-label">Workshop B</span>
+                    <h3>Web-/Front-Coding mit KI</h3>
+
+                    <h4>Ziel:</h4>
+                    <p>Entwickler:innen und Digitalteams zeigen, wie KI den Entwicklungsprozess beschleunigt.</p>
+
+                    <h4>Inhalte:</h4>
+                    <ul>
+                        <li>Code-Generierung und Debugging mit KI</li>
+                        <li>Integration von Modellen in Web-Projekte</li>
+                        <li>Erstellen interaktiver Anwendungen</li>
+                    </ul>
+
+                    <div class="service-result">
+                        <strong>Ergebnis:</strong> Teams lernen, wie man KI produktiv in Entwicklungs- und Marketing-Systeme integriert.
+                    </div>
+                </div>
+
+                <!-- Service C -->
+                <div class="service-card">
+                    <span class="service-label">Workshop C</span>
+                    <h3>Chatbots & Automatisierung</h3>
+
+                    <h4>Ziel:</h4>
+                    <p>Eigene Chatbots und automatisierte Systeme selbst aufbauen.</p>
+
+                    <h4>Inhalte:</h4>
+                    <ul>
+                        <li>Aufbau von Chatbots ohne Code-Hürde</li>
+                        <li>Integration in CRM, Website oder interne Tools</li>
+                        <li>Aufbau KI-gestützter Automatisierungen</li>
+                    </ul>
+
+                    <div class="service-result">
+                        <strong>Ergebnis:</strong> Automatisierte Abläufe in Kommunikation, Support und Sales.
+                    </div>
+                </div>
+
+                <!-- Service D -->
+                <div class="service-card">
+                    <span class="service-label">Workshop D</span>
+                    <h3>Context Engineering & Custom GPTs</h3>
+
+                    <h4>Ziel:</h4>
+                    <p>KI-Systeme auf die eigene Unternehmenssprache und Kultur anpassen.</p>
+
+                    <h4>Inhalte:</h4>
+                    <ul>
+                        <li>Entwicklung individueller Prompt-Architekturen</li>
+                        <li>Custom-GPT-Setups & Automatisierung</li>
+                        <li>Fine-Tuning des Sprachkontextes</li>
+                    </ul>
+
+                    <div class="service-result">
+                        <strong>Ergebnis:</strong> Eine maßgeschneiderte KI, die Ihre Sprache spricht und mit Ihren Daten arbeitet.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Connection to Grid -->
+    <section class="connection-section">
+        <div class="container">
+            <h2>Verbindung zum Erfolgs-Raster</h2>
+
+            <div class="connection-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Achse</th>
+                            <th>Beispielleistung</th>
+                            <th>Wirkung</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Technologie</strong></td>
+                            <td>Web-Coding & Automatisierung</td>
+                            <td>Systemintegration & technische Reife</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Menschen</strong></td>
+                            <td>Schulungen & Workshops</td>
+                            <td>Wissen & Akzeptanz</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Beide hoch</strong></td>
+                            <td>Context Engineering</td>
+                            <td>Skalierbares Wachstum</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="contact">
+        <div class="container">
+            <h2>Sind Technologie und Menschen in Ihrem Unternehmen bereit für KI?</h2>
+            <p>Buchen Sie ein kostenloses Erstgespräch – und entdecken Sie, wie Sie beides auf ein neues Niveau bringen.</p>
+
+            <form class="contact-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-Mail *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="topic">Thema</label>
+                    <select id="topic" name="topic">
+                        <option value="">Bitte wählen...</option>
+                        <option value="marketing">KI im digitalen Marketing</option>
+                        <option value="coding">Web-/Front-Coding mit KI</option>
+                        <option value="chatbots">Chatbots & Automatisierung</option>
+                        <option value="custom">Context Engineering & Custom GPTs</option>
+                        <option value="general">Allgemeine Beratung</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Nachricht</label>
+                    <textarea id="message" name="message" placeholder="Erzählen Sie uns von Ihren Herausforderungen und Zielen..."></textarea>
+                </div>
+
+                <button type="submit" class="cta-button">Jetzt Gespräch buchen</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 KI Workshops & Beratung. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+</body>
+</html>
